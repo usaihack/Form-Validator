@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="form">
+        <div class="container">
+        <div class="heading">Log In</div>
+
+        <div class="inputs">
+            <div class="input">
+                <input class="name" type="text" placeholder="Enter your full name" required>
+                <p class="validName"></p>
+            </div>
+            <div class="input">
+                <input class="email" type="email" placeholder="Enter your email" required>
+                <p class="validEmail"></p>
+            </div>
+            <div class="input">
+                <input class="pass" type="password" placeholder="Enter your password">
+                <p class="validPass"></p>
+            </div>
+            <div class="input">
+                <input class="cpass" type="password" placeholder="Re-enter your password">
+                <p class="matchPass"></p>
+            </div>
+        </div>
+
+        <div class="submit">
+            <button id="btn">Submit</button>
+        </div>
+    </div>
+    </div>
+
+    <div class="alert">
+        <div class="alertP">
+            <p id="alertText">⚠️ Please fix the errors before submitting</p>
+            <button id="resetbtn">OK</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
