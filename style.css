@@ -1,142 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap');
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Code', monospace;
+}
+
+:root {
+    --bg-color: #050505;
+    --primary-color: #0f0;
+    --error-color: #f00;
+    --dim-color: #003300;
 }
 
 body {
-  min-height: 100vh;
-  max-width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-}
-
-.form{
-    height: 100%;
-    width: 100%;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all ease 0.5s;
+    overflow: hidden;
 }
 
-.container{
-    height: 60%;
-    width: 20%;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgb(77, 77, 77);
+body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
 }
 
-.heading{
+.form {
     width: 100%;
-    margin-top: 20px;
+    z-index: 3;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: filter 0.3s ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 450px;
+    border: 1px solid var(--primary-color);
+    padding: 30px 20px;
+    background: rgba(0, 20, 0, 0.8);
+    box-shadow: 0 0 10px var(--primary-color), inset 0 0 10px var(--dim-color);
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+}
+
+.heading {
+    text-align: center;
     font-size: 2em;
     font-weight: 600;
-
+    margin-bottom: 30px;
+    text-shadow: 0 0 5px var(--primary-color);
+    letter-spacing: 2px;
 }
 
-.inputs{
-    height: 70%;
-    width: 100%;
+.inputs {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
-.inputs .input{
-    height: 20%;
-    width: 95%;
-}
-
-.name, .email, .pass, .cpass{
-    height: 75%;
-    width: 100%;
-    font-size: 16px;
-    padding: 10px;
-    border: 1px solid rgb(209, 209, 209);
-    outline: none;
-    border-radius: 50px;
-}
-
-.input p{
-    font-size: 10px;
-    margin: 2px 0 0 15px;
-}
-
-.submit{
-    height: 10%;
-    width: 100%;
-    margin-top: 10px;
+.input-group {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#btn{
-    height: 100%;
-    width: 95%;
-    border: 1px solid rgb(202, 202, 202);
-    background-color: 1px solid rgb(202, 202, 202);
-    cursor: pointer;
-    transition: all ease 0.5s;
-    border-radius: 50px;
-    font-size: 1.2em;
-    color: rgb(83, 83, 83);
+    flex-direction: column;
 }
 
-#btn:hover{
-    color: black;
-    background-color: rgb(205, 205, 205);
+.input-group label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    text-shadow: 0 0 2px var(--primary-color);
 }
 
-.alert{
-    height: 15%;
-    width: 20%;
-    border-radius: 5px;
-    position: absolute;
-    top: -15%;
-    background-color: rgba(255, 174, 174, 0.461);
-    transition: all ease 1s;
-    z-index: 1000;
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed var(--dim-color);
+    color: var(--primary-color);
+    font-size: 1.1em;
+    padding: 8px 5px;
+    outline: none;
+    transition: 0.3s;
 }
 
-.alertP{
-    height: 73%;
-    width: 100%;
+input:focus {
+    border-bottom: 1px solid var(--primary-color);
+    box-shadow: 0 2px 5px -2px var(--primary-color);
+}
+
+input::placeholder {
+    color: rgba(0, 255, 0, 0.3);
+}
+
+.input-group p {
+    font-size: 0.8em;
+    min-height: 15px;
+    margin-top: 5px;
+    text-shadow: 0 0 2px currentColor;
+}
+
+.submit {
     margin-top: 30px;
+}
+
+#btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 12px;
+    font-size: 1.2em;
+    cursor: pointer;
+    font-weight: 600;
+    text-shadow: 0 0 5px var(--primary-color);
+    box-shadow: 0 0 5px var(--dim-color) inset;
+    transition: all 0.2s;
+}
+
+#btn:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.alert {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid currentColor;
+    color: var(--error-color);
+    padding: 20px;
+    z-index: 1000;
+    transition: top 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    text-align: center;
+    box-shadow: 0 0 15px currentColor;
+}
+
+.alert.success {
+    color: var(--primary-color);
+}
+
+.alertP {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-#resetbtn{
-    height: 40%;
-    width: 25%;
+#alertText {
+    font-size: 1.1em;
+    text-shadow: 0 0 5px currentColor;
+}
+
+#resetbtn {
+    background: transparent;
+    border: 1px solid currentColor;
+    color: inherit;
+    padding: 8px 15px;
     cursor: pointer;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(209, 209, 209);
-    outline: none;
-    border-radius: 5px;
-    font-size: 16px;
-    color: rgb(130, 130, 130);
-    transition: all ease 0.5s;
+    font-weight: bold;
+    transition: 0.2s;
 }
 
-#resetbtn:hover{
-    background-color: rgb(237, 237, 237);
-    color: black;
-
+#resetbtn:hover {
+    background: currentColor;
+    color: var(--bg-color);
 }
 
-.form.blur{
-    filter: blur(5px);
+.form.blur {
+    filter: blur(4px) brightness(0.5);
     pointer-events: none;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    .heading {
+        font-size: 1.5em;
+    }
+    input {
+        font-size: 1em;
+    }
 }
